@@ -2,6 +2,9 @@ package ch.lan.bm.internal;
 
 import java.util.Collection;
 
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.XYChart;
+import javafx.scene.chart.XYChart.Data;
 import ch.lan.bm.internal.data.Bet;
 import ch.lan.bm.internal.data.BetEngineConfiguration;
 import ch.lan.bm.internal.data.Stock;
@@ -26,6 +29,8 @@ public class BetEngine {
 	private final BetEngineConfiguration configuration;
 	private final BetSystem betSystem;
 	private final StockHandler stockHandler;
+	
+	private final BarChart<String, Double> barChart;
 
 	/**
 	 * Default Constructor
@@ -40,18 +45,21 @@ public class BetEngine {
 	 *            the configuration to use
 	 * @param stockHandler
 	 *            the stockHandler to use
+	 * @param barChart 
 	 */
 	public BetEngine(final BetPlacer betPlacer,
 			final BetsProvider betsProvider,
 			final ResultListener resultListener, final BetSystem betSystem,
 			final BetEngineConfiguration configuration,
-			final StockHandler stockHandler) {
+			final StockHandler stockHandler, final BarChart<String, Double> barChart) {
 		this.betPlacer = betPlacer;
 		this.betsProvider = betsProvider;
 		this.resultListener = resultListener;
 		this.configuration = configuration;
 		this.betSystem = betSystem;
 		this.stockHandler = stockHandler;
+		
+		this.barChart = barChart;
 
 		stock = new Stock(configuration.getStartCapital());
 	}
@@ -64,6 +72,8 @@ public class BetEngine {
 	}
 
 	private void process() {
+		
+		XYChart.Series<String, Double> series = new XYChart.Series<>();
 
 		for (int i = 0; i < configuration.getAmountOfRounds(); i++) {
 
@@ -83,6 +93,8 @@ public class BetEngine {
 				break;
 			}
 
+			series.getData().add(new Data<String, Double>("Round "+i,stock.getCapital()));
+			
 			System.out.println("You're end captial is: " + stock.getCapital()
 					+ ".");
 			System.out.println("You've won " + stock.getWonTimes() + " times.");
@@ -91,6 +103,8 @@ public class BetEngine {
 			System.out.println("--------------------------" + i
 					+ "-----------------------------");
 		}
+		
+		barChart.getData().add(series);
 
 	}
 

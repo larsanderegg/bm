@@ -35,7 +35,7 @@ public class ConsoleStart {
 					Double.parseDouble(args[3]));
 
 			BetEngine betEngine = new BetEngine(betPlacer, betsProvider,
-					resultListener, betSystem, configuration, stockHandler);
+					resultListener, betSystem, configuration, stockHandler, null);
 
 			betEngine.start();
 

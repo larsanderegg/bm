@@ -1,6 +1,5 @@
 package ch.lan.bm;
 
-import ch.lan.bm.gui.MainController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,9 +23,6 @@ public class StartFx extends Application {
 		Scene scene = new Scene(root);
 		stage.setTitle("BM");
 		stage.setScene(scene);
-
-		MainController mainController = loader.getController();
-		mainController.setValues();
 
 		stage.show();
     }

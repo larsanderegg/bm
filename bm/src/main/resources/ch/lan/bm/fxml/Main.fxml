@@ -12,9 +12,9 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane id="" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="313.0" prefWidth="706.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="ch.lan.bm.gui.MainController">
+<BorderPane id="" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="442.0" prefWidth="706.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="ch.lan.bm.gui.MainController">
   <stylesheets>
-    <URL value="@../css/Main.css" />
+    <URL value="@../bm/src/main/resources/ch/lan/bm/css/Main.css" />
   </stylesheets>
   <top>
     <Pane id="pnHeader" prefHeight="67.0" prefWidth="790.0">
@@ -37,4 +37,15 @@
         </yAxis>
       </BarChart>
    </center>
+   <bottom>
+      <HBox prefHeight="41.0" prefWidth="706.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="amountOfRounds" />
+            <TextField fx:id="startCapital" />
+            <TextField fx:id="minOdds" />
+            <TextField fx:id="maxOdds" />
+            <Button mnemonicParsing="false" onAction="#startBetEngine" prefHeight="25.0" prefWidth="137.0" text="Button" />
+         </children>
+      </HBox>
+   </bottom>
 </BorderPane>
