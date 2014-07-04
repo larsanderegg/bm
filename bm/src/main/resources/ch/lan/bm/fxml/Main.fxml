@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane id="" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="313.0" prefWidth="706.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="ch.lan.bm.gui.MainController">
+  <stylesheets>
+    <URL value="@../css/Main.css" />
+  </stylesheets>
+  <top>
+    <Pane id="pnHeader" prefHeight="67.0" prefWidth="790.0">
+      <children>
+        <Label id="lblTitle" layoutX="14.0" layoutY="15.0" text="Test">
+          <textFill>
+            <Color blue="0.250" green="0.250" red="0.250" fx:id="x1" />
+          </textFill>
+        </Label>
+      </children>
+    </Pane>
+  </top>
+   <center>
+      <BarChart fx:id="barChart" BorderPane.alignment="CENTER">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" fx:id="xAxis" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" upperBound="15.0" />
+        </yAxis>
+      </BarChart>
+   </center>
+</BorderPane>
