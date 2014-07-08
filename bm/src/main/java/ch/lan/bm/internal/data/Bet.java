@@ -2,9 +2,9 @@ package ch.lan.bm.internal.data;
 
 /**
  * Container for one bet
- * 
+ *
  * @author Lars
- * 
+ *
  */
 public class Bet {
 
@@ -13,7 +13,7 @@ public class Bet {
 
 	/**
 	 * Returns the amount
-	 * 
+	 *
 	 * @return the amount
 	 */
 	public double getAmount() {
@@ -22,17 +22,17 @@ public class Bet {
 
 	/**
 	 * Sets the amount
-	 * 
+	 *
 	 * @param amount
 	 *            the amount to set
 	 */
-	public void setAmount(double amount) {
+	public void setAmount(final double amount) {
 		this.amount = amount;
 	}
 
 	/**
 	 * Returns the odds
-	 * 
+	 *
 	 * @return the odds
 	 */
 	public double getOdds() {
@@ -41,11 +41,16 @@ public class Bet {
 
 	/**
 	 * Sets the odds
-	 * 
+	 *
 	 * @param odds
 	 *            the odds to set
 	 */
-	public void setOdds(double odds) {
+	public void setOdds(final double odds) {
 		this.odds = odds;
+	}
+
+	@Override
+	public String toString() {
+		return "Bet[amount="+amount+", odds="+odds+"]";
 	}
 }

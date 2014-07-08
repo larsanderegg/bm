@@ -8,12 +8,17 @@ import ch.lan.bm.internal.data.Stock;
 
 public class SimulatedResultListener implements ResultListener {
 
+	private final double winnigChance;
+
+	public SimulatedResultListener(final double winnigChance) {
+		this.winnigChance = winnigChance/100;
+	}
+
 	@Override
-	public void listenForBets(Collection<Bet> bets, StockHandler stockHandler,
-			Stock stock) {
-		System.out.println("Listen for " + bets.size() + " bets.");
-		for (Bet bet : bets) {
-			final boolean won = Math.random() < 0.4;
+	public void listenForBets(final Collection<Bet> bets, final StockHandler stockHandler,
+			final Stock stock) {
+		for (final Bet bet : bets) {
+			final boolean won = Math.random() < winnigChance;
 			if (won) {
 				// System.out.println("won");
 				stockHandler.handleWon(bet, stock);

@@ -6,21 +6,22 @@ import ch.lan.bm.internal.data.Stock;
 public class StockHandlerImpl implements StockHandler {
 
 	@Override
-	public void handleWon(Bet bet, Stock stock) {
+	public void handleWon(final Bet bet, final Stock stock) {
 		if (stock != null) {
 			stock.increaseWonTimes();
 
-			double wonAmount = bet.getAmount() * bet.getOdds();
+			final double wonAmount = bet.getAmount() * bet.getOdds();
+			System.out.println("You won "+wonAmount);
 			stock.increaseCapital(wonAmount);
 		}
 	}
 
 	@Override
-	public void handleLost(Bet bet, Stock stock) {
+	public void handleLost(final Bet bet, final Stock stock) {
 		if (stock != null) {
 			stock.increaseLostTimes();
 
-			stock.decreaseCapital(bet.getAmount());
+//			stock.decreaseCapital(bet.getAmount());
 		}
 
 	}

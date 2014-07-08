@@ -2,16 +2,28 @@ package ch.lan.bm.provider;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Random;
 
 import ch.lan.bm.internal.data.Bet;
 
 public class SimulatedBetProvider implements BetsProvider {
 
-	private final static int amountOfBets = 10;
+	private final int amountOfBets;
+	private final Random random;
+
+
+	/**
+	 * Default Constructor
+	 * @param amountOfBets the amount of bets
+	 */
+	public SimulatedBetProvider(final int amountOfBets) {
+		this.amountOfBets = amountOfBets;
+		this.random = new Random();
+	}
 
 	@Override
-	public Collection<Bet> getBets(double minOdds, double maxOdds) {
-		Collection<Bet> result = new HashSet<>();
+	public Collection<Bet> getBets(final double minOdds, final double maxOdds) {
+		final Collection<Bet> result = new HashSet<>();
 
 		for (int i = 0; i < amountOfBets; i++) {
 			result.add(generateBet(minOdds, maxOdds));
@@ -20,13 +32,13 @@ public class SimulatedBetProvider implements BetsProvider {
 		return result;
 	}
 
-	private Bet generateBet(double minOdds, double maxOdds) {
-		Bet result = new Bet();
+	private Bet generateBet(final double minOdds, final double maxOdds) {
+		final Bet result = new Bet();
 
-		int min = (int) minOdds * 10;
-		int max = (int) maxOdds * 10;
+		final double range = (maxOdds - minOdds);
+		double odds = (Math.random() * range) + minOdds;
 
-		double odds = (Math.random() * max + min) / 10;
+		odds = Math.round( odds * 100. ) / 100.;
 
 		result.setOdds(odds);
 

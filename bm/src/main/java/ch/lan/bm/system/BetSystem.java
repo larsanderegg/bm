@@ -5,50 +5,20 @@ import java.util.Collection;
 import ch.lan.bm.internal.data.Bet;
 import ch.lan.bm.internal.data.Stock;
 
-/**
- * @author Lars
- * 
- */
-public class BetSystem {
-
-	private final double minOdds;
-	private final double maxOdds;
+public interface BetSystem {
 
 	/**
-	 * @param minOdds
-	 * @param maxOdds
+	 * Depending on the system fill and filters the given bets
+	 * @param bets the bets to use
+	 * @param stock the stock to use
+	 *
+	 * @return a collection of bets, may be empty
 	 */
-	public BetSystem(double minOdds, double maxOdds) {
-		this.minOdds = minOdds;
-		this.maxOdds = maxOdds;
-	}
+	Collection<Bet> calculateBets(final Collection<Bet> bets, final Stock stock);
 
-	public Collection<Bet> calcBets(Collection<Bet> bets, Stock stock) {
-		double betAmount = stock.getCapital() / bets.size();
-		System.out.println("Set betAmount to: " + betAmount);
-		for (Bet bet : bets) {
-			bet.setAmount(betAmount);
-		}
-
-		return bets;
-	}
 
 	/**
-	 * Returns the minOdds
-	 * 
-	 * @return the minOdds
+	 * @return the bet system values
 	 */
-	public double getMinOdds() {
-		return minOdds;
-	}
-
-	/**
-	 * Returns the maxOdds
-	 * 
-	 * @return the maxOdds
-	 */
-	public double getMaxOdds() {
-		return maxOdds;
-	}
-
+	BetSystemValues getSystemValues();
 }
